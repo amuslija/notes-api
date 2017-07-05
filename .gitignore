@@ -2,3 +2,4 @@
 *-lock.json
 .env
 *.log
+nodemon.json
