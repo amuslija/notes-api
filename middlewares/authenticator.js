@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken');
 var config = require('../config.js');
+var fs = require('fs');
 
 function authenticator(req, res, next) {
 

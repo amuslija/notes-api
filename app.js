@@ -4,13 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 
 var authenticator = require('./middlewares/authenticator');
 var errorHandler = require('./middlewares/error-handler');
 var config = require('./config.js')
 var index = require('./routes/index');
 var users = require('./routes/users');
+var notes = require('./routes/notes');
+var signup = require('./routes/signup');
 var authentication = require('./routes/authentication');
 
 var app = express();
@@ -27,21 +28,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/authenticate', authentication);
+app.use('/signup', signup);
 app.use(authenticator);
-//
+
 app.use('/', index);
-app.use('/users', users);
-
-// app.get('*', (req, res) => {
-//   console.log(req.body);
-//   res.json({ message: 'success' })
-// });
-//
-// app.post('*', (req, res) => {
-//   console.log(req.body);
-//   res.json({ message: 'success' })
-// });
-
+// app.use('/users', users);
+app.use('/notes', notes);
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

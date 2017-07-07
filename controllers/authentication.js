@@ -1,7 +1,8 @@
 var jwt = require('jsonwebtoken');
-var User = require('../app/models').User;
+var User = require('../models/sql/models').User;
 var encryption = require('../libs/encryption');
 var config = require('../config.js');
+var fs = require('fs')
 
 module.exports = {
   authenticateLogin(req, res, next) {

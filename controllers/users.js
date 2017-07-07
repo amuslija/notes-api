@@ -1,4 +1,4 @@
-var User = require('../app/models').User;
+var User = require('../models/sql/models').User;
 var encryption = require('../libs/encryption');
 
 module.exports = {
