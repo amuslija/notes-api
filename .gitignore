@@ -4,3 +4,4 @@
 *.log
 nodemon.json
 .secret
+*.lock

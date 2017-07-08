@@ -3,7 +3,7 @@ var config = require('../config.js');
 var fs = require('fs');
 
 function authenticator(req, res, next) {
-
+  console.log(req.headers);
   var authorizationHeader = req.headers['authorization'];
   var schema = authorizationHeader.split(' ')[0];
   var token = authorizationHeader.split(' ')[1];

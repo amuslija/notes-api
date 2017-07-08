@@ -19,7 +19,8 @@ module.exports = {
               next(new Error('Passwords did not match'));
             };
             var token = jwt.sign({ id: user.id, email: user.email }, secret, { expiresIn: 1440 });
-            res.json({ email: user.email, token: token });
+            var resp = { email: user.email, token: token };
+            res.json(resp);
           })
       })
       .catch(err => next(err));
